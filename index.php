@@ -1,5 +1,5 @@
 <?php 
-   session_start() ;
+ 
 
    include 'config.php';
 
@@ -7,18 +7,18 @@ if ( isset( $_POST[ 'submit' ] ) )
  {
     if ( !empty( $_POST[ 'email' ] ) AND !empty( $_POST[ 'mdp' ] ) ) 
  {
-        $email = htmlspecialchars( $_POST[ 'email' ] );
-        $pass =htmlspecialchars( $_POST[ 'mdp' ] ) ;
+        $email = $_POST[ 'email' ] ;
+        $pass = $_POST[ 'mdp' ];
     
-    $result = $conn->prepare( " SELECT * FROM admin WHERE email = '$email' && password = '$pass' " );
+    $result = $conn->prepare( " SELECT * FROM admin WHERE email = '$email' && password= '$pass' " );
 
     $result->execute( array( $email, $pass ) );
     if ( $result->rowCount()>0 ) 
  {
         $stag = $result->fetch();
         session_start();
-        $_SESSION[ 'nom' ] = $stag[ 'nom' ];
-        $_SESSION[ 'prenom' ] = $stag[ 'prenom' ];
+        // $_SESSION[ 'nom' ] = $stag[ 'nom' ];
+        // $_SESSION[ 'prenom' ] = $stag[ 'prenom' ];
 
         header( 'location:admin.php' );
 

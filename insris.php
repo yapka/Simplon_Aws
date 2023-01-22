@@ -10,14 +10,7 @@ if ( isset( $_POST[ 'submit' ] ) )
     $password = $_POST["mdp"];
     $confirmpassword = $_POST["cmdp"];
     
-    
-    
-    
-
-    
-    $select = " SELECT * FROM participants WHERE email = '$email' ";
-
-    $result = $conn->prepare( $select );
+    $result = $conn->prepare(  $select = " SELECT * FROM participants WHERE email = '$email' " );
     $result->execute( array( $email) );
 
     
